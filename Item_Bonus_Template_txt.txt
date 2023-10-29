@@ -1,0 +1,358 @@
+
+//Base Stats
+----------
+bonus bStr,n;						STR + n; //"[Increases/Decreases] the player's STR by [n]."
+bonus bAgi,n;						AGI + n; //"[Increases/Decreases] the player's AGI by [n]."
+bonus bVit,n;						VIT + n; //"[Increases/Decreases] the player's VIT by [n]."
+bonus bInt,n;						INT + n; //"[Increases/Decreases] the player's INT by [n]."
+bonus bDex,n;						DEX + n; //"[Increases/Decreases] the player's DEX by [n]."
+bonus bLuk,n;						LUK + n; //"[Increases/Decreases] the player's LUK by [n]."
+bonus bAgiVit,n;						AGI + n, VIT + n; //"[Increases/Decreases] the player's AGI by [n] and VIT by [n]." (Can simplify to "AGI and VIT by n" if same number)
+bonus bAgiDexStr,n;					STR + n, AGI + n, DEX + n; //"[Increases/Decreases] the player's STR by [n], AGI by [n], and DEX by [n]." (Can simplify if same number)
+bonus bAllStats,n;					STR + n, AGI + n, VIT + n, INT + n, DEX + n, LUK + n; //"[Increases/Decreases] all stats by [n]."
+
+//HP/SP
+-----
+bonus bMaxHP,n;						MaxHP + n; //"[Increases/Decreases] the player's max HP by [n]."
+bonus bMaxHPrate,n;					MaxHP + n%; //"[Increases/Decreases] the player's max HP by [n]%."
+bonus bMaxSP,n;						MaxSP + n; //"[Increases/Decreases] the player's max SP by [n]."
+bonus bMaxSPrate,n;					MaxSP + n%; //"Increases/Decreases] the player's max SP by [n]%."
+
+//Attack/Def
+----------
+bonus bAtk,n;						ATK + n; //"Increases/Decreases] the player's ATK by [n]."
+bonus bAtk2,n;						ATK2 + n; //*Do not use bAtk2
+bonus bAtkRate,n;					Attack Power + n%; //"[Increases/Decreases] the player's ATK by [n]%."
+bonus bBaseAtk,n;					Basic Attack Power + n; //"Increases/Decreases] the player's base attack power by [n]."
+bonus bDef,n;						Equipment DEF + n; //"[Increases/Decreases] the player's Hard DEF by [n]."
+bonus bDef2,n;						VIT based DEF + n; //"[Increases/Decreases] the player's Soft DEF by [n]."
+bonus bDefRate,n;					Equipment DEF + n%; //"[Increases/Decreases] the player's Hard DEF by [n]%."
+bonus bDef2Rate,n;					VIT based DEF + n%; //"[Increases/Decreases] the player's Soft DEF by [n]%."
+
+//Magic Attack/Def
+----------------
+bonus bMatk,n;						Magical attack power + n; //"[Increases/Decreases] the player's MATK by [n]."
+bonus bMatkRate,n;					Magical attack power + n%; //"[Increases/Decreases] the player's MATK by [n]%."
+bonus bMdef,n;						Equipment MDEF + n; //"[Increases/Decreases] the player's Hard MDEF by [n]."
+bonus bMdef2,n;						INT based MDEF + n; //"[Increases/Decreases] the player's Soft MDEF by [n]."
+bonus bMdefRate,n;					Equipment MDEF + n%; //"[Increases/Decreases] the player's Hard MDEF by [n]%."
+bonus bMdef2Rate,n;					INT based MDEF + n%; //"[Increases/Decreases] the player's Soft MDEF by [n]%."
+
+//Other Stats
+-----------
+bonus bHit,n;						Hit + n; //"[Increases/Decreases] the player's Hit by [n]."
+bonus bHitRate,n;						Hit + n%; //"[Increases/Decreases] the player's Hit by [n]%."
+bonus bCritical,n;						Critical + n; //"[Increases/Decreases] the player's Crit by [n]."
+bonus bCriticalRate,n;					Critical + n%; //"[Increases/Decreases] the player's Crit by [n]%."
+bonus bFlee,n;						Flee + n; //"[Increases/Decreases] the player's Flee by [n]."
+bonus bFleeRate,n;					Flee + n%; //"[Increases/Decreases] the playe's Flee by [n]%."
+bonus bFlee2,n;						Perfect Dodge + n; //"[Increases/Decreases] the player's Perfect Dodge by [n]."
+bonus bFlee2Rate,n;					Perfect Dodge + n%; //"[Increases/Decreases] the player's Perfect Dodge by [n]%."
+bonus bPerfectHitRate,n;				On-target impact attack probability n% (only the highest among all is applied); //[Increases/Decreases] the player's Perfect Hit by [n]."
+bonus bPerfectHitAddRate,n;			On-target impact attack probability + n%; //"[Increases/Decreases] the player's Perfect Hit by [n]%."
+*bonus bSpeedRate,n;					Moving speed + n% (only the highest among all is applied); //"[Increases/Decreases] the player's Movement Speed by [n]%. Only the highest among all is applied." 
+*bonus bSpeedAddRate,n;				Moving speed + n%; //"[Increases/Decreases] the player's Movement Speed by [n]%." *
+bonus bAspd,n;						Attack speed + n; //"[Increases/Decreases] the player's ASPD by [n]."
+bonus bAspdRate,n;					Attack speed + n%; //"[Increases/Decreases] the player's ASPD by [n]%."
+bonus bAtkRange,n;					Attack range + n; //"[Increases/Decreases] the player's Atk Range by [n]."
+bonus bAddMaxWeight,n;				MaxWeight + n (in units of 0.1); //"[Increases/Decreases] the player's Max Weight by [n]."
+
+=======================
+| 2. Extended Bonuses |
+=======================
+
+//HP
+--
+bonus bHPrecovRate,n;				Natural HP recovery ratio + n%; //"[Increases/Decreases] the player's Natural HP Recovery ."
+bonus2 bHPRegenRate,n,t;				Gain n HP every t milliseconds; //"The player regenerates +[n] HP every t seconds." (Need to convert milliseconds into seconds)
+bonus2 bHPLossRate,n,t;				Lose n HP every t millisecond; //"The player loses -[n] HP every t seconds." (Need to convert milliseconds into seconds)
+
+//SP
+--
+bonus bSPrecovRate,n;				Natural SP recovery ratio + n%; //"The player's Natural SP Recovery Rate is increased by [n]%."
+bonus2 bSPRegenRate,n,t;				Gain n SP every t milliseconds; // "The player gains [n] SP every [t] seconds." (Need to convert milliseconds into seconds)
+bonus2 bSPLossRate,n,t;				Lose n SP every t milliseconds; //"The player loses [n] SP every [t] seconds." (Need to convert milliseconds into seconds)
+bonus bUseSPrate,n;					SP consumption + n%; //"[Increases/Decreases] the player's SP Consumption Rate by [n]%."
+bonus2 bSkillUseSP,sk,n;				Reduces SP consumption of skill sk by n.; //"The SP Consumption of [skill] is [reduced/increased] by [n]."
+bonus2 bSkillUseSPrate,sk,n;			Reduces SP consumption of skill sk by n%; //"The SP Consumption of [skill] is [reduced/increased] by n%."
+bonus bNoRegen,x;					Stops regeneration for x (x: 1=HP, 2=SP); //"Stops HP regeneration." (If x=1); "Stops SP regeneration." (If x=2)
+
+//Attack/Def
+----------
+bonus bNearAtkDef,n;					Adds n% damage reduction against melee physical attacks; //"[Increases/Decreases] the playe's damage against melee physical attacks by [n]%."
+bonus bLongAtkDef,n;					Adds n% damage reduction against ranged physical attacks; //"[Increases/Decreases] the player's damage against ranged physical attacks by [n]%."
+bonus bMagicAtkDef,n;				Adds n% damage reduction against magical attacks; //"[Increases/Decreases] the player's damage against magical attacks by [n]%."
+bonus bMiscAtkDef,n;					Adds n% damage reduction against MISC attacks (traps, falcon, ...); //"[Increases/Decreases] the player's damage against MISC attacks (traps, falcon, etc) by [n]%."
+bonus bCriticalDef,n;					Decreases Chance of being hit by critical by n%; //"Decreases the player's chance of being hit by a critical attack by n%."
+
+bonus2 bSkillAtk,sk,n;				Increase damage of skill sk by n%; //"[Increases/Decreases] [skill] damage by [n]%."
+bonus2 bWeaponAtk,w,n;				Adds n ATK when weapon of type w is equipped; //"{Increases/Decreases] the player's ATK by [n] when [w] weapon type is equipped."
+bonus2 bWeaponAtkRate,w,n;			Adds n% damage to weapon attacks when weapon of type w is equipped; //"[Increases/Decreases] the player's damage to attacks by [n]% when [w] weapon type is equipped.
+bonus bLongAtkRate,n;				Increases damage of ranged attacks by n%; //"[Increases/Decreases] the player's damage of ranged attacks by [n]%."
+bonus bCritAtkRate,n;					Increase critical damage by +n%; //"[Increases/Decreases] player's critical damage by [n]%."
+
+bonus bNoWeaponDamage,n;			Prevents from receiving n% physical damage; //"The player will not take n% physical damage." ; (Alternative: "The player is immune to physical damage.)
+bonus bNoMagicDamage,n;				Prevents from receiving n% magical effect (Attack, Healing, Support spells are all blocked); //"The player will not take n% magical effect from any magic spells." ; (Alternative: "The player is immune to spells.)
+bonus bNoMiscDamage,n;				Adds n% reduction to received misc damage; //"[Increases/Decreases] the player's damage against MISC damage by [n]%."
+
+//Heal
+----
+bonus bHealPower,n;					Increase heal amount of all heal skills by n%; //"[Increases/Decreases] the player's healing for all skills by [n]%."
+bonus bHealPower2,n;					Increase heal amount if you are healed by any skills by n%; //"[Increases/Decreases] the amount of healing the player receives from any skills by [n]%."
+
+bonus2 bSkillHeal,sk,n;				Increase heal amount of skill sk by n%; //"[Increases/Decreases] the player's healing for [skill] by [n]%."
+bonus2 bSkillHeal2,sk,n;				Increase heal amount if you are healed by skill sk by n%; //"[Increases/Decreases] the amount of healing the player receives from [skill] by [n]%."
+
+bonus bAddItemHealRate,n;				Increases HP recovered by n% for healing items.; //"[Increases/Decreases] the player's HP Recovery from all healing items by [n]%."
+bonus2 bAddItemHealRate,id,n;			Increases HP recovered by n% for item id/ig; //"[Increases/Decreases] the player's HP Recovery from [item] by [n]%."
+
+//Skill Cast
+----------
+bonus bCastrate,n;					Skill casting time rate + n%; //"[Increases/Decreases] player's skill casting time by [n]%."
+bonus2 bCastrate,sk,n;				Adjust casting time of skill sk by n%; //[Increases/Decreases] player's casting time of [skill] by [n]%."
+
+bonus bFixedCastrate,n;				Increases fixed cast time of all skills by n%; //"[Increases/Decreases] the player's fixed cast time of all skills by [n]%."
+bonus2 bFixedCastrate,s,n;				Increases fixed cast time of skill sk by n%; //"Increases/Decreases] the player's fixed cast time of [skill] by [n]%."
+bonus bFixedCast,t;					Increases fixed cast time of all skills by t milliseconds; //"[Increases/Decreases] the player's fixed cast time of all skills by [t] seconds." (Need to convert milliseconds into seconds)
+bonus2 bSkillFixedCast,sk,t;			Increases fixed cast time of skill sk by t milliseconds; //"Increases/Decreases] the player's fixed cast time of [skill] by [t] seconds." (Need to convert milliseconds into seconds)
+
+bonus bVariableCastrate,n;				Increases variable cast time of all skills by n%; //"[Increases/Decreases] variable cast time of all skills by [n]%."
+bonus2 bVariableCastrate,sk,n;			Increases variable cast time of skill sk by n%; //"[Increases/Decreases] variable cast time of [skill] by [n]%."
+bonus bVariableCast,t;					Increases variable cast time of all skills by t milliseconds; //"[Increases/Decreases] variable cast time of all skills by [t] seconds." (Need to convert milliseconds into seconds)
+bonus2 bSkillVariableCast,sk,t;			Increases variable cast time of skill sk by t milliseconds; //"[Increases/Decreases] variable cast time of [skill] by [t] seconds." (Need to convert milliseconds into seconds)
+
+bonus bNoCastCancel,n;				Prevents casting from being interrupted when hit (does not work in GvG | n is meaningless); //"Prevents the player's casting from being interrupted when hit. Does not work in GvG."
+bonus bNoCastCancel2,n;				Prevents casting from being interrupted when hit (works even in GvG | n is meaningless); //"Prevents the player's casting from being interrupted when hit."
+
+bonus bDelayrate,n;					Increases skill delay by n%; //"[Increases/Decreases] skill delay byy [n]%]."
+bonus2 bSkillCooldown,sk,t;			Increases cooldown of skill sk by t milliseconds; //[Increases/Decreases] cooldown of [skill] by [t] seconds." (Need to convert milliseconds into seconds)
+
+=============================
+| 3. Group-specific Bonuses |
+=============================
+
+//Damage Modifiers
+----------------
+bonus2 bAddSize,s,n;					+n% Physical damage against size s; //"[Increases/Decreases] the player's physical damage against [size] mobs by [n]%."
+bonus2 bMagicAddSize,s,n;			+n% Magical damage against size s; //"[Increases/Decreases] the player's magical damage against [size] mobs by [n]%."
+bonus2 bSubSize,s,n;					+n% Damage reduction against size s; //"[Increases/Decreases] the player's damage reduction against [size] mobs by [n]%."
+
+bonus2 bAddRaceTolerance,r,n;			+n% tolerance against race r (Renewal Only); //"[Increases/Decreases] the player's tolerance against [race] mobs by [n]%." (Unlikely to be used since Renewal bonus)
+
+bonus2 bAddRace,r,n;				+n% Physical damage against race r; //"[Increases/Decreases] the player's physical damage against [race] mobs by [n]%." (Exclude mob if player race)
+bonus2 bMagicAddRace,n,x;			+n% Magical damage against race r; //"[Increases/Decreases] the player's magical damage against [race] mobs by [n]%." (Exclude mob if player race)
+bonus2 bSubRace,r,n;				+n% Damage reduction against race r; //"[Increases/Decreases] the player's damage reduction against [race] mobs by [n]%." (Exclude mob if player race)
+
+bonus2 bAddRace2,mr,n;				+n% Damage Against monster race mr; //"[Increases/Decreases] the player's damage against [monster race] mobs by [n]%."
+bonus2 bSubRace2,mr,n;				+n% Damage reduction against monster race mr; //"[Increases/Decreases] the player's damage reduction against [monster race] mobs by [n]%.
+
+bonus2 bAddEle,e,n;					+n% Physical damage against element e; //"[Increases/Decreases] player's physical damage against [element] by [n]%."
+bonus2 bMagicAddEle,e,n;				+n% Magical damage against element e; //"[Increases/Decreases] the player's magical damage against [element] by [n]%."
+bonus2 bMagicAtkEle,e,n;				Increases damage of element e magic by n%; //"[Increases/Decreases] the player's [element] elemental damage by [n]."
+bonus3 bAddEle,e,n,bf;				+n% physical damage against element e; //"[Increases/Decreases] the player's physical weapon damage against [element] by [n]%."
+bonus2 bSubEle,e,n;					+n% Damage reduction against element e; //"[Increases/Decreases] the player's damage reduction against [element] by [n]%."
+*bonus3 bSubEle,e,n,bf;				+n% Damage reduction against element e; //The player's [bf] [increases/decreases] their damage reduction against [element] elemental damage by [n]%. 
+
+bonus2 bAddDamageClass,c,x;			+n% extra physical damage against monsters of class c; //"[Increases/Decreases] physical damage against[class] mobs by [n]%."
+bonus2 bAddMagicDamageClass,c,x;		+n% extra magical damage against monsters of class c; //[Increases/Decreases] magical damage against mob [class] mobs by [n]%."
+*bonus2 bAddDefClass,c,x;				+n% physical damage reduction against monsters of class c; //"[Increases/Decreases] physical damage dealt by [class] mobs by [n]%."
+*bonus2 bAddMDefClass,c,x;			+n% magical damage reduction against monsters of class c; //[Increases/Decreases] the player's magical damage dealt by [class] mobs by [n]%
+*bonus2 bCriticalAddRace,r,n;     		+n Critical Against race r; //"[Increases/Decreases] the player's critical damage against [race] mobs by [n]%."
+
+//Attack/Def
+----------
+bonus bAtkEle,e;						//Gives the player's attacks element e //"Gives the player's attack [element] element."
+bonus bDefEle,e;					//Gives the player's defense element e; //"Gives the player's defense [element] element."
+
+bonus bDefRatioAtkEle,e;				Deals more damage to enemies of element e with higher defense; //"Deals [n]% more [element] elemental damage to enemies based on their defense." 
+bonus bDefRatioAtkRace,r;				Deals more damage to enemies of race r with higher defense; //"Deals [n]% more damage to [race] enemies based on their defense." 
+
+*bonus4 bSetDefRace,r,n,t,y;			Set DEF to y of an enemy of race r at n/100% for t milliseconds with normal attack; //"Sets the DEF to [y] for an enemy of [race] race for [t] seconds with normal attacks."
+*bonus4 bSetMDefRace,r,n,t,y;			Set MDEF to y of an enemy of race r at n/100% for t milliseconds with normal attack; //"Sets the MDEF to [y] for an enemy of [race] for [t] seconds with normal attacks."
+
+//Ignore Def
+----------
+bonus bIgnoreDefRace,r;				Disregard DEF against enemies of race r; //"Ignores the DEF of enemies of [race] race."
+bonus bIgnoreMDefRace,r;			Disregard MDEF against enemies of race r; //"Ignores the MDEF of enemies of [race] race."
+
+bonus bIgnoreDefEle,e;				Disregard DEF against enemies of element e; //"Ignores the DEF against enemies of [element] element."
+bonus bIgnoreMDefEle,e;				Disregard MDEF against enemies of element e; //"Ignores the MDEF of enemies of [element] element."
+
+bonus2 bIgnoreDefRate,r,n;			//Disregard n% of the target's DEF if the target belongs to race r; //"Ignores [n]% of the target's DEF if the target belongs to [race] race."
+bonus2 bIgnoreMdefRate,r,n;			//Disregard n% of the target's MDEF if the target belongs to race r; //"Ignores [n]% of the target's MDEF if the target belongs to [race] race."
+
+bonus bIgnoreMdefRate,n;				//Disregard n% of the target's MDEF; //"Ignores [n]% of the target's MDEF."
+
+//Experience
+----------
+bonus2 bExpAddRace,r,n;				+n% Experience from enemies of race r; //"Gives the player [n]% bonus expereience from enemies of [race] race."
+
+=============================
+//| 4. Status-related Bonuses |
+=============================
+bonus2 bResEff,e,n;					Adds a n/100% tolerance to effect e; //"Increases/Decreases" the player's tolerance to [effect] by [n]%."
+bonus2 bAddEff,eff,n;				Adds a n/100% chance to cause effect eff to the target when attacking; //"Gives the player [n]% chance to trigger [effect] on the target when attacking."
+bonus2 bAddEff2,eff,n;				Adds a n/100% chance to cause effect eff on self when attacking.; //"Gives the player [n]% chance to trigger [effect] on self when attacking."
+bonus3 bAddEff,eff,n,abf;			Adds a n/100% chance to cause effect eff to the target when attacking for target abf; //Gives the player [n]% chance to trigger [effect] on the target when attacking for [abf]."
+bonus4 bAddEff,eff,n,abf,t;			Adds a n/100% chance to cause effect eff to the target when attacking for target abf for t milliseconds; //"Gives the player [n]% chance to trigger [effect] on the target when attacking for [abf] by [t]. The effect cannot be avoided nor the time effected reduced." (Need to convert milliseconds to seconds)
+									(Note:The effect can't be avoided nor its duration reduced. Duration: 0-65535)
+bonus3 bAddEffOnSkill,sk,eff,n;		Adds a n/100% chance to cause effect eff on enemy when using skill sk; //"Gives the player [n]% chance to trigger [effect] on the target when using the skill [skill]."
+bonus4 bAddEffOnSkill,sk,eff,n,abf;	Adds a n/100% chance to cause effect eff when using skill sk; //"Gives the player [n]% chance to trigger [effect] on the target when using the skill [skill] for [abf]."
+
+bonus2 bAddEffWhenHit,eff,n;			n/100% chance to cause effect eff to the enemy when being hit by physical damage; //"Gives the player [n]% chance to trigger [effect]on target when being hit by physical damage."
+bonus3 bAddEffWhenHit,eff,n,abf;		Adds a n/100% chance to cause effect eff to the enemy when being hit by physical damage; //Gives the player [n]% chance to trigger [effect] on target when being hit by physical damage for [abf]."
+
+bonus2 bWeaponComaRace,r,n;			Adds a n/100% chance to cause Coma when attacking a monster of race r with a weapon attack; //"Gives the player [n]% chance to cause Coma when attacking [race] mobs with a weapon attack."
+bonus2 bWeaponComaEle,e,n;			Adds a n/100% chance to cause Coma when attacking a monster of element e with weapon attack; //"Gives the player [n]% chance to cause Coma when attacking [element] mobs with a weapon attack."
+
+========================
+//| 5. AutoSpell Bonuses |
+========================
+NOTES:
+  - For all AutoSpell bonuses, target must be within the spell's range to go off.
+  - By default, AutoSpell skills are casted on target unless it is a self or support skill (inf = 4/16).
+
+bonus4 bAutoSpellOnSkill,sk,x,y,n;		Adds a n/10% chance to autospell skill x at level y when using skill sk; //"Gives the player [n]% chance to autospell [x] at level [y] when using [skill]."
+bonus5 bAutoSpellOnSkill,sk,x,y,n,i;	Adds a n/10% chance to autospell skill x at level y when using skill sk; //"Gives the player [n]% chance to autospell [x] at level [y] when using [skill]. (If i = 1, then change to "autospell on self", if i = 2, then change "at random level")
+										i: Flags (bitfield)
+											&1: Forces the skill to be casted on self, rather than on the target of skill sk
+											&2: Random skill level between 1 and l is chosen.
+										
+bonus4 bAutoSpell,sk,y,n,i;				n/10% chance to cast skill sk of level y when attacking; //"Gives the player [n]% chance to cast [skill] of level [y] when attacking." (If i = 1, then change to "cast [skill] on self", if i = 2, then change "at random level")
+bonus5 bAutoSpell,sk,y,n,bf,i;			n/10% chance to cast skill sk of level y when attacking; //"Gives the player [n]% change to cast [skill] of level [y] when attacking with [bf]." (If i = 1, then change to "cast [skill] on self", if i = 2, then change "at random level")
+bonus4 bAutoSpellWhenHit,sk,y,n,i;		n/10% chance to cast skill sk of level y when being hit by a direct attack; //"Gives the player [n]% chance to cast [skill] of level [y] when being hit by a direct attack." (If i = 1, then change to "cast [skill] on self", if i = 2, then change "at random level")
+*bonus5 bAutoSpellWhenHit,sk,y,n,bf,i;	n/10% chance to cast skill sk of level y when being hit by a direct attack; //Gives the player [n]% chance to cast [skill] of [y] level when being hit by a direct attack." (If i = 0, "cast [skill] on self"; If i = 1, "cast [skill] on enemy"; If i = 2, "chance to cast random skill"; If i = 3, "cast random skill on enemy")
+										i:
+											0 = cast on self
+											1 = cast on enemy, not on self
+											2 = use random skill lv in [1..y]
+											3 = 1+2 (random lv on enemy)
+										
+bonus3 bAutoSpellWhenHit,sk,x,n;		n/10% chance to cast skill sk of level x on attacker when being hit by a direct attack; //"Gives the player [n]% to cast [skill] of [y] level on the attacker when being hit by a direct attack."
+bonus3 bAutoSpell,sk,x,n;				Auto Spell casting on attack of spell sk at level x with n/10% chance; //"Gives the player [n]% chance to autocast [spell] at level [x]."
+
+===================
+//| 6. Misc Bonuses |
+===================
+
+HP/SP Drain
+-----------
+bonus bHPDrainValue,n;				Heals +n HP with weapon attack.; //"Heals the player [n] HP with weapon attacks."
+bonus2 bHPDrainValue,n,x;			Heals +n HP with weapon attack. When x is non-zero, the HP is drained instead.; //"Drains the player's HP by [n] with weapon attacks."
+bonus2 bHPDrainRate,n,x;			n/10% probability to drain x% HP when attacking; //"Gives the player [n]% chance to drain [x]% HP when attacking."
+
+bonus bSPDrainValue,n;				When hitting a monster by physical attack, you gain n SP; //"Gives the player [n] SP when attacking mobs with physical attacks."
+bonus2 bSPDrainRate,n,x;			n/10% probability to drain x% SP when attacking; //"Gives the player [n]% chance to drain [x]% SP when attacking."
+bonus2 bSPDrainValue,n,x;			When hitting a monster by physical attack
+									x:
+										0: Gain n SP; //"Gain [n] SP when hitting a target with physical attack."
+										1: drain n SP from target; //"Drain [n] SP from target when hitting with physical attack."
+bonus3 bSPDrainRate,n,x,y;			When attacking there is a n/10% chance to either gain SP equivalent to x% of damage dealt,
+									OR drain the amount of sp from the enemy.
+									y:
+										0: Gain SP; //"Gives the player [n]% chance to gain [x]% of damage dealt as SP."
+										1: Drain SP from target; //"Gives the player [n]% chance to drain [x]% SP of the target when attacking."
+
+bonus2 bHPDrainValueRace,r,n;		Heals +n HP when attacking a monster of race r with weapon attack.; //"Heals [n] HP when attacking [race] race mob with weapon attack."
+bonus2 bSPDrainValueRace,r,n;		Heals +n SP when attacking a monster of race r with weapon attack.; //"Recover [n] SP when attacking [race] race mob with weapon attack."
+
+bonus3 bHPDrainRateRace,r,n,x;		Adds a n/10% chance to receive x% of damage dealt as HP from a monster of race r with weapon attack.; //Gives the player [n]% chance to receive [x]% of damage dealt as HP from a [race] mob with weapon attack."
+bonus3 bSPDrainRateRace,r,n,x;		Adds a n/10% chance to receive x% of damage dealt as SP from a monster of race r with weapon attack.; //"Gives the player [n]% to receive [x]% of damage dealt as SP from [race] mob with weapon attack."
+
+//HP/SP Vanish
+------------
+bonus2 bHPVanishRate,n,x;			Add the (n/10)% chance of decreasing enemy HP amount by x% when attacking; //"Gives the player [n]% chance of decreasing enemy HP amount by [x]% when attacking."
+bonus2 bSPVanishRate,n,x;			Add the (n/10)% chance of decreasing enemy SP amount by x% when attacking; //"Gives the player [n]% chance of decreasing enemy SP amount by [x]% when attacking."
+
+bonus3 bHPVanishRate,n,x,bf;		Add the (n/10)% chance of decreasing enemy HP amount by x% when attacking for criteria bf; //"Gives the player [n]% chance of decreasing enemy HP amount by [x]% when attacking for [bf].
+bonus3 bSPVanishRate,n,x,bf;		Add the (n/10)% chance of decreasing enemy SP amount by x% when attacking for criteria bf; //"Gives the player [n]% chance of decreasing enemy SP amount by [x]% when attacking for [bf].
+
+//HP/SP Gain
+----------
+bonus bHPGainValue,n;				When killing a monster by physical attack, you gain n HP; //"Gives the player [n] HP when killing mob by physical attack."
+bonus bSPGainValue,n;				When killing a monster by physical attack, you gain n SP; //"Gives the player [n] SP when killing mob by physical attack."
+
+bonus bMagicHPGainValue,n;			Gains +n HP when killing an enemy with magic attack; //"Gives the player [n] HP when killing mob by magic attack."
+bonus bMagicSPGainValue,n;			Gains +n SP when killing an enemy with magic attack; //"Gives the player [n] SP when killing mob by magic attack."
+
+bonus2 bHPGainRaceAttack,r,n;		Heals n HP when attacking Race r on every hit; //"Heals [n] HP when attacking [race] race mobs on every hit."
+bonus2 bSPGainRaceAttack,r,n;		Heals n SP when attacking Race r on every hit; //"Gain [n] SP when attacking [race] race mobs on every hit."
+
+bonus2 bSPGainRace,r,n;				When killing a monster of race r by physical attack gain n SP; //"Gain [n] SP when killing [race] race mobs by physical attack."
+
+//Damage return
+-------------
+bonus bMagicDamageReturn,n;			Adds a n% chance to reflect targetted magic spells back to the enemy that caused it; //"Gives the player [n]% chance to reflect targeted magic spells back to the enemy that caused it."
+bonus bShortWeaponDamageReturn,n;	Reflects n% of received melee damage back to the enemy that caused it; //"Reflects [n]% of the melee damage received back to the enemy that caused it."
+bonus bLongWeaponDamageReturn,n;	Reflects n% of received ranged damage back to the enemy that caused it; //"Reflects [n]% of the ranged damaged received back to the enemy that caused it."
+
+//Strip/Break equipment
+---------------------
+NOTE:
+	- n is meaningless if not mentioned.
+
+
+bonus bUnstripable,n;				Equipment cannot be taken off via strip skills; //"The player's equipment cannot be taken off via Strip Skills."
+bonus bUnstripableWeapon,n;			Weapon cannot be taken off via Strip skills; //"The player's weapon cannot be taken off via Strip Skills."
+bonus bUnstripableArmor,n;			Armor cannot be taken off via Strip skills; //"The player's armor cannot be taken off via Strip Skills."
+bonus bUnstripableHelm,n;			Helm cannot be taken off via Strip skills; //"The player's helm cannot be taken off via Strip Skills."
+bonus bUnstripableShield,n;			Shield cannot be taken off via Strip skills; //"The player's shield cannot be taken off via Strip Skills."
+
+bonus bUnbreakable,n;				Reduces the break chance of all equipped equipment by n%.; //"Reduces the break chance of all equipped equipment by [n]%."
+bonus bUnbreakableGarment,n;		Garment cannot be damaged/broken by any means; //"Garment cannot be damaged or broken by any means."
+bonus bUnbreakableWeapon,n;			Weapon cannot be damaged/broken by any means; //"Weapon cannot be damaged or broken by any means."
+bonus bUnbreakableArmor,n;			Armor cannot be damaged/broken by any means; //"Armor cannot be damaged or broken by any means."
+bonus bUnbreakableHelm,n;			Helm cannot be damaged/broken by any means; //"Helm cannot be damaged or broken by any means."
+bonus bUnbreakableShield,n;			Shield cannot be damaged/broken by any means; //"Shield cannot be damaged or broken by any means."
+bonus bUnbreakableShoes,n;			Shoes cannot be damaged/broken by any means; //"Shoes cannot be damaged or broken by any means."
+
+bonus bBreakWeaponRate,n;			//Adds a n/100% chance to break enemy's weapon while attacking (Stackable); //Gives the player [n]% chance to break enemy's weapon while attacking. These effects can be stacked."
+bonus bBreakArmorRate,n;				//Adds a n/100% chance to break enemy's armor while attacking (Stackable); //"Gives the player [n]% chance to break the enemy's armor while attacking. These effects can be stacked."
+
+//Monster Related
+---------------
+*bonus3 bAddClassDropItem,id,c,n;	Adds a n/100% chance of dropping item id when killing monster mid; //"Adds [n]% chance of dropping item [id] when killing mobs."
+
+bonus2 bAddMonsterDropItem,id,n;	Adds a n/100% chance for item id to be dropped, when killing any monster.; //"Adds [n]% chance of dropping item [id] when killing mobs."
+bonus3 bAddMonsterDropItem,id,r,n;	Adds a n/100% chance for item id to be dropped, when killing any monster of race r.; //"Adds [n]% chance of dropping item [id] when killing [race] race mobs."
+										If 'n' is negative value, then it's a part of formula
+										chance = -y*(killed_mob_level/10)+1
+
+*bonus bAddMonsterDropChainItem,ic;	Able to get Item of chain ic when you kill a monster; //"Adds chance of dropping items of [item chain] when killing mobs."
+*bonus2 bAddMonsterDropChainItem,ic,r;	Able to get item of chain ic when you kill a monster of race r; //"Adds chance of dropping items of [item chain] when killing a mob of [race] race."
+
+bonus2 bGetZenyNum,x,n;				When killing a monster, there is a n% chance of gaining 1~x zeny (only the highest among all is applied).; //"When killing a monster, there is [n]% chance of gaining zeny. Only the highest amont all is applied."
+bonus2 bAddGetZenyNum,x,n;			When killing a monster, there is a n% chance of gaining 1~x zeny (Stackable); //"When killing a monster, there is [n]% chance of gaining zeny. These effects are stackable."
+									x:
+										< 0: Max Zeny gain is (-x*monster_level)
+
+//Misc effects
+------------
+skill i,n;							Gives skill #i at level n; //"Gives the player [skill] at level [n]."
+
+bonus bDoubleRate,n;					Double Attack probability +n% (works with all weapons | only the highest among all is applied); //"Gives the player [n]% chance of Double Attack. Works with all weapon types; only the highest level among all is applied."
+bonus bDoubleAddRate,n;				Double Attack probability +n% (works with all weapons); //"Gives the player [n]% chance of Double Attack. Works with all weapon types."
+
+bonus bSplashRange,n;				Splash attack radius +n (highest is applied); //"Gives the player +[n] radius Splash Attack. Only the highest is applied."
+bonus bSplashAddRange,n;				Splash attack radius + n (e.g. n=1 makes a 3*3 cells area, n=2 a 5*5 area, etc); //"Gives the player +[n] radius Splash Attack."
+									n:
+										1: 3*3 Area
+										2: 5*5 Area
+										...
+
+bonus bClassChange,n;				//Gives a n/100% chance to change the attacked monster's class with normal attack.; //"Gives the player [n]% chance to change the attacked mob's class with normal attack."
+bonus bAddStealRate,n;				n/100% increase to Steal skill success chance; //"Increases the player's chance to successfully Steal Skill by [n]%."
+bonus bRestartFullRecover,n;			When reviving, HP and SP are fully healed; //"When reviving, the HP and SP of player are fully healed."
+*bonus bNoSizeFix,n;					The attack revision with the size of the monster is not received
+bonus bNoGemStone,n;				Skills requiring Gemstones do no require them (Hocus Pocus will still require 1 Yellow Gemstone); //"Skills will no longer require a gemstone to cast."
+bonus bNoOrb,n;                 Skills requiring Orbs do no require them (Hocus Pocus will still require 1 Yellow Gemstone | n is meaningless); //Skills will no longer require an Orb to cast."
+bonus bIntravision,n;					Always see Hiding and Cloaking players/mobs; //"The player will always be able to see Hiding or Cloaked players or mobs."
+										n: is meaningless
+
+bonus2 bAddSkillBlow,sk,n;			Knockbacks the target by n cells when using skill sk; //"The player will knockback target by [n] cells when using [skill] skill."
+bonus bNoKnockback,n;				Character is no longer knocked back by enemy skills with such effect (n is meaningless); //"The player can no longer be knocked back by enemy skills."
+
+bonus bPerfectHide,n;				Hidden/cloaked character is no longer detected by monsters with 'detector' mode (n is meaningless).; //"The player can no longer be detected by mobs with 'Detector' when Hidden or Cloaked."
+
+
+itemheal hp,sp;					Restores the players hp sp based on the values provided; count 2 effects if both sp and hp is filled. //Restores the Character's [Hp/Sp] by [value];
